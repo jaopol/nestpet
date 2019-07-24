@@ -8,10 +8,10 @@
 		<version>2.2.0.BUILD-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.app.nestpet</groupId>
-	<artifactId>nestpet</artifactId>
+	<groupId>com.app.nestpets</groupId>
+	<artifactId>nestpets</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>nestpet</name>
+	<name>nestpets</name>
 	<description>API para o sistema de pet</description>
 
 	<properties>

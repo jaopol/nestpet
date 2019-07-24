@@ -1,13 +1,13 @@
-package com.app.nestpet.api;
+package com.app.nestpets.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NestpetApplication {
+public class NestpetsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NestpetApplication.class, args);
+		SpringApplication.run(NestpetsApplication.class, args);
 	}
 
 }
