@@ -1,11 +1,23 @@
 package com.app.nestpets.api.models;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.app.nestpets.api.enums.Porte;
 
-public class Pet {
+@Document(collection = "pet")
+public class Pet implements Serializable {
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Id
 	private String id;
 	private String nome;
 	private String nomePai;
@@ -15,7 +27,7 @@ public class Pet {
 	private String cor;
 	private String sexo;
 	private String foto;
-	private Porte porte;
+	private String porte;
 	private Date dataNascimentoPet;
 	private Date dataNascimentoMae;
 	private Date dataNascimentoPai;
@@ -84,10 +96,10 @@ public class Pet {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	public Porte getPorte() {
+	public String getPorte() {
 		return porte;
 	}
-	public void setPorte(Porte porte) {
+	public void setPorte(String porte) {
 		this.porte = porte;
 	}
 	public Date getDataNascimentoPet() {
