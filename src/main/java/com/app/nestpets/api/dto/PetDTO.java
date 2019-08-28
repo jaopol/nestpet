@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import com.app.nestpets.api.models.Pet;
 
 import lombok.Data;
 
 @Data
+@Component
 public class PetDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -59,4 +62,11 @@ public class PetDTO implements Serializable {
 	}
 	
 
+	public Pet fromDtoToEntity( PetDTO dto ) {
+		return new Pet(dto.getId(), dto.getNome(), dto.getNomePai(), dto.getNomeMae(), dto.getRaca(), 
+				dto.getPelagem(), dto.getCor(), dto.getSexo(), dto.getFoto(), dto.getPorte(), 
+				dto.getDataNascimentoPet(), dto.getDataNascimentoPai(), dto.getDataNascimentoMae(), 
+				dto.getObservacao(), dto.getCuidados(), dto.getPedigree(), dto.getNumeroIdentidade(), 
+				dto.getDataCriacao(), dto.getDataAtualizacao() );
+	}
 }

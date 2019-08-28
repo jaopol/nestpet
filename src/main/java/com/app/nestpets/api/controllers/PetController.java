@@ -1,5 +1,6 @@
 package com.app.nestpets.api.controllers;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -7,9 +8,11 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.app.nestpets.api.dto.PetDTO;
 import com.app.nestpets.api.models.Pet;
@@ -21,6 +24,9 @@ public class PetController {
 	
 	@Autowired
 	private PetService petService;
+	
+	@Autowired
+	private PetDTO petDto;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<PetDTO>> findAll(){
@@ -41,4 +47,15 @@ public class PetController {
 	
 		return ResponseEntity.ok().body( new PetDTO(obj.get()) );
 	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insertPet( @RequestBody PetDTO dto ){
+		
+		Pet obj = petDto.fromDtoToEntity(dto);
+		obj = petService.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand( obj.getId() ).toUri();
+		
+		return ResponseEntity.created(uri).build();
+	}
+
 }

@@ -22,4 +22,8 @@ public class PetService {
 	public Optional<Pet> findById(String id) {
 		return petRepository.findById(id);
 	}
+	
+	public Pet insert(Pet obj) {
+		return petRepository.insert(obj);
+	}
 }
