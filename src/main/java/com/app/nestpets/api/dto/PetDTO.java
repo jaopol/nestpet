@@ -1,6 +1,7 @@
 package com.app.nestpets.api.dto;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 
 import com.app.nestpets.api.models.Pet;
@@ -27,6 +28,9 @@ public class PetDTO implements Serializable {
 	private String observacao;
 	private String cuidados;
 	private String pedigree;
+	private String numeroIdentidade;
+	private Instant dataCriacao;
+	private Instant dataAtualizacao;
 	
 	public PetDTO() {
 		
@@ -42,13 +46,16 @@ public class PetDTO implements Serializable {
 		this.cor = obj.getCor();
 		this.sexo = obj.getSexo();
 		this.foto = obj.getFoto();
-		this.porte = obj.getPorte();
+		this.porte = obj.getPorte().getValue();
 		this.dataNascimentoPet = obj.getDataNascimentoPet();
 		this.dataNascimentoPai = obj.getDataNascimentoPai();
 		this.dataNascimentoMae = obj.getDataNascimentoMae();
 		this.observacao = obj.getObservacao();
 		this.cuidados = obj.getCuidados();
 		this.pedigree = obj.getPedigree();
+		this.numeroIdentidade = obj.getNumeroIdentidade();
+		this.dataCriacao = obj.getDataCriacao();
+		this.dataAtualizacao = obj.getDataAtualizacao();
 	}
 	
 
