@@ -63,11 +63,21 @@ public class PetController {
 		
 		Boolean ok = petService.delete(id);
 		
-		  if( ok ) { 
-			  return ResponseEntity.noContent().build(); 
-		  }
+		if( ok ) { 
+			return ResponseEntity.noContent().build(); 
+		}
 	
 		return ResponseEntity.status(404).build();
+	}
+	
+	@RequestMapping( value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> updatePet( @RequestBody PetDTO dto, @PathVariable String id ){
+		
+		Pet obj = petDto.fromDtoToEntity(dto);
+		obj.setId(id);
+		obj = petService.update(obj);
+		
+		return ResponseEntity.noContent().build();
 	}
 
 }

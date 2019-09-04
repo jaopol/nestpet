@@ -37,6 +37,37 @@ public class PetService {
 		}
 		
 		return Boolean.FALSE;
-		 
+	}
+	
+	public Pet update(Pet pet) {
+		
+		Optional<Pet> newPet = petRepository.findById(pet.getId());
+		
+		if( newPet.isPresent() ) {
+			
+			updateData(newPet.get(), pet);
+			return petRepository.save( newPet.get() );
+		}
+		pet.setId(null);
+		return pet;
+	}
+
+	private void updateData(Pet newPet, Pet pet) {
+		newPet.setCor( pet.getCor() );
+		newPet.setCuidados( pet.getCuidados() );
+		newPet.setDataNascimentoMae( pet.getDataNascimentoMae() );
+		newPet.setDataNascimentoPai( pet.getDataNascimentoPai() );
+		newPet.setDataNascimentoPet( pet.getDataNascimentoPet() );
+		newPet.setFoto( pet.getFoto() );
+		newPet.setNome( pet.getNome() );
+		newPet.setNomeMae( pet.getNomeMae() );
+		newPet.setNomePai( pet.getNomePai() );
+		newPet.setNumeroIdentidade( pet.getNumeroIdentidade() );
+		newPet.setObservacao( pet.getObservacao() );
+		newPet.setPedigree( pet.getPedigree() );
+		newPet.setPelagem( pet.getPelagem() );
+		newPet.setPorte( pet.getPorte() );
+		newPet.setRaca( pet.getRaca() );
+		newPet.setSexo( pet.getSexo() );
 	}
 }
