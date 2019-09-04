@@ -26,4 +26,17 @@ public class PetService {
 	public Pet insert(Pet obj) {
 		return petRepository.insert(obj);
 	}
+	
+	public Boolean delete(String id) {
+		
+		Optional<Pet> pet = findById(id);
+		
+		if( pet.isPresent() ) {
+			petRepository.deleteById(id);
+			return Boolean.TRUE;
+		}
+		
+		return Boolean.FALSE;
+		 
+	}
 }

@@ -57,5 +57,17 @@ public class PetController {
 		
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping( value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteById( @PathVariable String id){
+		
+		Boolean ok = petService.delete(id);
+		
+		  if( ok ) { 
+			  return ResponseEntity.noContent().build(); 
+		  }
+	
+		return ResponseEntity.status(404).build();
+	}
 
 }
